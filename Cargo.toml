@@ -14,9 +14,9 @@ codegen-units = 1
 debug = 2
 opt-level = "s"
 
-# Use local nrf-sdc with ISO/BIS support and nrfxlib v3.2.4
+# Use graynode/nrf-sdc add-iso-bis-support branch (nrfxlib v3.2.4 + CIS/BIS support)
 [patch.crates-io]
-nrf-sdc      = { path = "/Users/ma10866/software-graynode/nrf-sdc/nrf-sdc" }
-nrf-mpsl     = { path = "/Users/ma10866/software-graynode/nrf-sdc/nrf-mpsl" }
-nrf-sdc-sys  = { path = "/Users/ma10866/software-graynode/nrf-sdc/nrf-sdc-sys" }
-nrf-mpsl-sys = { path = "/Users/ma10866/software-graynode/nrf-sdc/nrf-mpsl-sys" }
+nrf-sdc      = { git = "https://github.com/graynode/nrf-sdc", rev = "2a4fca724163a30819314332aeb63490af4426fe"}
+nrf-mpsl     = { git = "https://github.com/graynode/nrf-sdc", rev = "2a4fca724163a30819314332aeb63490af4426fe" }
+nrf-sdc-sys  = { git = "https://github.com/graynode/nrf-sdc", rev = "2a4fca724163a30819314332aeb63490af4426fe" }
+nrf-mpsl-sys = { git = "https://github.com/graynode/nrf-sdc", rev = "2a4fca724163a30819314332aeb63490af4426fe" }

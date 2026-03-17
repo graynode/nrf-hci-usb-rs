@@ -52,7 +52,7 @@ rand_core = "0.9"
 # Logging
 defmt = "1"
 defmt-rtt = "1"
-panic-probe = { version = "0.3", features = ["print-defmt"] }
+panic-probe = { version = "1", features = ["print-defmt"] }
 
 # Utilities
 static_cell = "2"

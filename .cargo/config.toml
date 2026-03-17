@@ -1,0 +1,11 @@
+[build]
+target = "thumbv8m.main-none-eabihf"
+
+[target.thumbv8m.main-none-eabihf]
+rustflags = ["-C", "link-arg=-Tlink.x"]
+
+[target.thumbv8m.main-none-eabi]
+rustflags = ["-C", "link-arg=-Tlink.x"]
+
+[env]
+BINDGEN_EXTRA_CLANG_ARGS = "-I/usr/lib/gcc/arm-none-eabi/13.2.1/include"

@@ -39,6 +39,11 @@ use embassy_usb::Builder;
 use static_cell::StaticCell;
 use {defmt_rtt as _, panic_probe as _};
 
+#[defmt::panic_handler]
+fn defmt_panic() -> ! {
+    panic_probe::hard_fault();
+}
+
 mod ipc;
 mod led;
 mod usb_hci;

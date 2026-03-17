@@ -52,6 +52,11 @@ use static_cell::StaticCell;
 use thingy53_ipc as ipc;
 use {defmt_rtt as _, panic_probe as _};
 
+#[defmt::panic_handler]
+fn defmt_panic() -> ! {
+    panic_probe::hard_fault();
+}
+
 // ── Interrupt bindings ───────────────────────────────────────────────────── //
 //
 // nRF5340 net-core interrupt names.  MPSL requires EGU0 (low-priority),

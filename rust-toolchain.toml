@@ -1,7 +1,7 @@
 [toolchain]
 channel = "1.94.0"
 profile = "minimal"
-components = ["llvm-tools", "rust-src"]
+components = ["llvm-tools-preview", "rust-src"]
 targets = [
     "thumbv8m.main-none-eabi",
     "thumbv8m.main-none-eabihf",

@@ -1,4 +1,4 @@
-.PHONY: all build build-app build-net flash logs-app logs-net debug-server size clean
+.PHONY: all build build-app build-net flash logs-app logs-net debug-server size clean help
 
 APP_TARGET  := thumbv8m.main-none-eabihf
 NET_TARGET  := thumbv8m.main-none-eabi
@@ -15,7 +15,7 @@ all: build
 build: build-net build-app
 
 build-app:
-	cargo build --release -p thingy53-app
+	cargo build --release -p thingy53-app --target $(APP_TARGET)
 
 build-net:
 	cargo build --release -p thingy53-net --target $(NET_TARGET)
@@ -74,3 +74,19 @@ size: build
 clean:
 	cargo clean
 	rm -f $(APP_HEX) $(NET_HEX)
+
+help:
+	@echo "Usage: make [target]"
+	@echo ""
+	@echo "Targets:"
+	@echo "  all           Build both cores (default)"
+	@echo "  build         Build both cores"
+	@echo "  build-app     Build the app core ($(APP_TARGET))"
+	@echo "  build-net     Build the network core ($(NET_TARGET))"
+	@echo "  flash         Build, convert to hex, and flash both cores via nrfjprog"
+	@echo "  logs-app      Stream RTT logs from the app core via probe-rs"
+	@echo "  logs-net      Stream RTT logs from the network core via probe-rs"
+	@echo "  debug-server  Start a probe-rs DAP server on port 50000 for Zed debugger"
+	@echo "  size          Build and report flash/RAM usage for both cores"
+	@echo "  clean         Remove build artifacts and generated hex files"
+	@echo "  help          Show this help message"
