@@ -1,0 +1,22 @@
+[workspace]
+members = ["app", "net", "ipc"]
+default-members = ["app"]
+resolver = "2"
+
+# Profile settings apply at the workspace level
+[profile.release]
+debug = 2
+opt-level = "s"
+lto = "fat"
+codegen-units = 1
+
+[profile.dev]
+debug = 2
+opt-level = "s"
+
+# Use local nrf-sdc with ISO/BIS support and nrfxlib v3.2.4
+[patch.crates-io]
+nrf-sdc      = { path = "/Users/ma10866/software-graynode/nrf-sdc/nrf-sdc" }
+nrf-mpsl     = { path = "/Users/ma10866/software-graynode/nrf-sdc/nrf-mpsl" }
+nrf-sdc-sys  = { path = "/Users/ma10866/software-graynode/nrf-sdc/nrf-sdc-sys" }
+nrf-mpsl-sys = { path = "/Users/ma10866/software-graynode/nrf-sdc/nrf-mpsl-sys" }

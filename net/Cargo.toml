@@ -1,0 +1,59 @@
+[package]
+name = "thingy53-net"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "thingy53-net"
+path = "src/main.rs"
+
+[dependencies]
+# Embassy — must match the versions required by nrf-mpsl / nrf-sdc
+embassy-executor = { version = "0.9", features = [
+    "arch-cortex-m",
+    "executor-thread",
+    "executor-interrupt",
+    "defmt",
+] }
+embassy-nrf = { version = "0.9", features = [
+    "nrf5340-net",
+    "time-driver-rtc1",
+    "defmt",
+    "unstable-pac",
+] }
+embassy-sync = { version = "0.7", features = ["defmt"] }
+embassy-time = { version = "0.5", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-futures = "0.1"
+
+# nRF SoftDevice Controller (Bluetooth LE controller for nRF5340 network core)
+nrf-mpsl = { version = "0.3", features = [
+    "nrf5340-net",
+    "defmt",
+    "critical-section-impl",
+] }
+nrf-sdc = { version = "0.4", features = [
+    "nrf5340-net",
+    "defmt",
+    "peripheral",   # BLE peripheral role
+    "central",      # BLE central role
+] }
+
+# HCI packet types
+bt-hci = { version = "0.8", default-features = false, features = ["defmt"] }
+
+# ARM Cortex-M
+cortex-m = { version = "0.7", features = ["inline-asm"] }
+cortex-m-rt = "0.7"
+
+# Random number generation (required by nrf-sdc)
+rand_core = "0.9"
+
+# Logging
+defmt = "1"
+defmt-rtt = "1"
+panic-probe = { version = "0.3", features = ["print-defmt"] }
+
+# Utilities
+static_cell = "2"
+thingy53-ipc = { path = "../ipc" }

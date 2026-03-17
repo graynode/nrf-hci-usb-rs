@@ -1,0 +1,13 @@
+# Embed.toml — reference config for probe-rs chip settings.
+# Use `make flash` to build and flash both cores.
+# Use `make logs-net` in a second terminal to view net core RTT logs.
+
+[default.general]
+chip = "nRF5340_xxAA"
+
+[default.flashing]
+enabled = true
+do_chip_erase = true
+
+[default.reset]
+enabled = true
