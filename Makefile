@@ -54,12 +54,12 @@ debug-server:
 	probe-rs dap-server --port 50000
 
 size: build
-	@echo "=== Net core (flash: 128K, RAM: 64K) ==="
+	@echo "=== Net core (flash: 256K, RAM: 64K) ==="
 	@rust-size -A $(NET_ELF) | awk '\
 	  /\.text|\.rodata|\.vector_table|\.gnu.sgstubs/ { flash += $$2 } \
 	  /\.data|\.bss|\.uninit/                        { ram   += $$2 } \
 	  END { printf "  Flash: %d bytes (%.1f%%)\n  RAM:   %d bytes (%.1f%%)\n", \
-	        flash, flash/131072*100, ram, ram/65536*100 }'
+	        flash, flash/262144*100, ram, ram/65536*100 }'
 	@echo ""
 	@echo "=== App core (flash: 1024K, RAM: 224K) ==="
 	@rust-size -A $(APP_ELF) | awk '\
